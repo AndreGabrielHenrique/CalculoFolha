@@ -1,31 +1,15 @@
-﻿string separador=new string('-',60);
+﻿﻿string separador=new string('-',60);
+//Dados funcionario
+Funcionario funcionario=new Funcionario();
 Console.WriteLine(separador);
 Console.WriteLine("Informe o nome do funcionário");
-string nome=Console.ReadLine();
+funcionario.nome=Console.ReadLine();
 Console.WriteLine("Informe o salário inicial");
-double salario=double.Parse(Console.ReadLine());
+funcionario.salario=double.Parse(Console.ReadLine());
 Console.WriteLine("Informe a taxa de imposto cobrado (%)");
-int imposto=int.Parse(Console.ReadLine());
-double salarioLiquido=CalculaSalarioLiquido();
-Console.WriteLine(separador);
-System.Console.WriteLine($"Nome:                                            {nome}");
-System.Console.WriteLine($"Salário líquido:                                 {salarioLiquido:c}");
-Console.WriteLine(separador);
+funcionario.imposto=int.Parse(Console.ReadLine());
+Console.WriteLine(funcionario);
 Console.WriteLine("Informe qual a porcentagem do aumento");
 int aumento=int.Parse(Console.ReadLine());
-CalculaAumentoSalario(aumento);
-salarioLiquido=CalculaSalarioLiquido();
-Console.WriteLine(separador);
-System.Console.WriteLine($"Nome:                                            {nome}");
-System.Console.WriteLine($"Salário líquido:                                 {salarioLiquido:c}");
-Console.WriteLine(separador);
-double CalculaSalarioLiquido()
-{
-    double desconto=salario*imposto/100;
-    return salario-desconto;
-}
-void CalculaAumentoSalario(int aumento)
-{
-    double valorAumento=salario*aumento/100;
-    salario+=valorAumento;
-}
+funcionario.CalculaAumentoSalario(aumento);
+Console.WriteLine(funcionario.ToString());
